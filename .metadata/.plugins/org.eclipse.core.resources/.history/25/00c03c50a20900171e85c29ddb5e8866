@@ -6,6 +6,11 @@
     <title></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- endbuild -->
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" ng-if="demo.cssMode === 'bootstrap'">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.1/css/foundation.css" ng-if="demo.cssMode === 'foundation'">
@@ -16,10 +21,15 @@
 </head>
 
 <body>
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!-- Add your site or application content here -->
     <div class="container">
         <div class="row">
-            <h1>Avaliador de segurança de senha</h1>
-            <h3>CSS:</h3>
+            <h1>ngPasswordStrength</h1>
+            <h3>CSS mode:</h3>
             <ul>
                 <li>
                     <a
@@ -33,7 +43,7 @@
                 </li>
             </ul>
 
-            <h3>Modo de calculo:</h3>
+            <h3>Calculation mode:</h3>
             <ul>
                 <li>
                     <a
@@ -50,9 +60,9 @@
             <div
                 class="goal"
                 ng-if="demo.calculationMode==='entropy'">
-                <label for="">Meta</label>
+                <label for="">Goal</label>
                 <input type="number" ng-model="demo.goal">
-                
+                <span>To improve performance goal is not watched so you have to change password to see how it influences</span>
             </div>
 
 
@@ -64,7 +74,7 @@
                     placeholder="Password"
                     ng-model="user.password">
 
-                <h2>Variáveis</h2>
+                <h2>Vars</h2>
                 <div
                     ng-if="demo.cssMode === 'foundation'">
                         <div
@@ -85,7 +95,7 @@
                             inner-class-prefix="progress-bar-"></div>
                 </div>
 
-                <h2>Modo</h2>
+                <h2>Mode</h2>
                 <div
                     ng-password-strength="user.password"
                     strength="passStrength"
@@ -94,7 +104,7 @@
                     css-mode="{{demo.cssMode}}"></div>
 
             </div>
-            <div>A força atual é <strong>{{demo.passStrength}}</strong>
+            <div>Current strength is <strong>{{demo.passStrength}}</strong>
             </div>
         </div>
     </div>

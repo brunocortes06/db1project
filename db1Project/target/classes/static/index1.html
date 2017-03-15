@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html class="no-js" ng-app="PasswordStrength">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Validação de Registro</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="css/main.css">
+    </head>
+    <body>
+        <div class="main-container">
+        <div class="form-container">
+        
+            <form action="" method="POST" name="joinTeamForm" role="form" ng-controller="FormController">
+                <legend class="form-label">Cadastro</legend>
+            
+                <div class="form-group">
+                    <label for="fullname">Nome Completo</label>
+
+                    <div class="error form-hint" ng-show="joinTeamForm.fullname.$dirty && joinTeamForm.fullname.$error.required" ng-cloak>{{"Campo obrigatório."}}</div>
+
+                    <input type="text" class="form-control" ng-class="(joinTeamForm.fullname.$dirty && joinTeamForm.fullname.$invalid) ? 'error' : ''" id="fullname" name="fullname" placeholder="Enter Fullname" ng-required="true" ng-model="fullname">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+
+                    <div class="error form-hint" ng-show="joinTeamForm.email.$dirty && joinTeamForm.email.$error.required" ng-cloak>{{"Campo obrigatório."}}</div>
+
+                    <div class="error form-hint" ng-show="joinTeamForm.email.$dirty && joinTeamForm.email.$error.email" ng-cloak>{{"Email inválido."}}</div>
+
+                    <input type="email" class="form-control" ng-class="(joinTeamForm.email.$dirty && joinTeamForm.email.$invalid) ? 'error' : ''" id="email" name="email" placeholder="Enter Email Address" ng-required="true" ng-model="email">
+                </div>
+            
+                <div class="form-group">
+                    <label for="password">Senha</label>
+
+                    <div class="form-hint">Para estar em conformidade com a nossa política de senha forte, você precisa usar uma senha suficientemente forte. A senha deve ter mais de 7 caracteres.</div>
+
+                    <input type="password" class="form-control ok-password" ng-class="(joinTeamForm.password.$dirty && joinTeamForm.password.$invalid) ? 'error' : ''" id="password" name="password" placeholder="Enter Password" ng-required="true" ng-model="password">
+
+                    <div class="label password-count" ng-class="password.length > 7 ? 'label-success' : 'label-danger'" ng-cloak>{{ password | passwordCount:7 }}</div>
+
+                    <div class="strength-meter">
+                        <div class="strength-meter-fill" data-strength="{{passwordStrength}}"></div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary" ng-disabled="joinTeamForm.$invalid">Submit</button>
+            </form>
+        </div>
+        </div>
+       
+        <script src="bower_components/angular/angular.min.js"></script>
+        <script src="js/app.js"></script>
+    </body>
+</html>

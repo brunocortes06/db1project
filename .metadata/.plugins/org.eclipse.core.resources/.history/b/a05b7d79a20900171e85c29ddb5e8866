@@ -16,10 +16,15 @@
 </head>
 
 <body>
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!-- Add your site or application content here -->
     <div class="container">
         <div class="row">
             <h1>Avaliador de segurança de senha</h1>
-            <h3>CSS:</h3>
+            <h3>CSS mode:</h3>
             <ul>
                 <li>
                     <a
@@ -94,7 +99,7 @@
                     css-mode="{{demo.cssMode}}"></div>
 
             </div>
-            <div>A força atual é <strong>{{demo.passStrength}}</strong>
+            <div>Current strength is <strong>{{demo.passStrength}}</strong>
             </div>
         </div>
     </div>
